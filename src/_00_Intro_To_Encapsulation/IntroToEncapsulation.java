@@ -17,7 +17,7 @@ public class IntroToEncapsulation {
 		// 3. Call setFuelInTank with an amount greater than the capacity.
 		vehicle.setMpg(1);
 		// Note: The reason setFuelInTank doesn't show up is because it's private.
-		
+		vehicle.setFuelInTank(50000);
 		// 4. Modify setFuelInTank's access modifier so you can use it.
 		// Hint: Access modifiers are described at the top of the Vehicle class.
 		vehicle.setFuelInTank(500);

@@ -1,5 +1,6 @@
 package _03_Intro_to_Enums;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
@@ -27,10 +28,24 @@ public class IntroToEnums {
 
 		// 3. Create an array of StatesOfMatter with all the values using .values().
 		// Hint: Use "StatesOfMatter." as if it were a static method.
-
+		ArrayList<StatesOfMatter> states = new ArrayList<StatesOfMatter>();
+		states.add(0, StatesOfMatter.GAS);
+		states.add(1, StatesOfMatter.LIQUID);
+		states.add(2, StatesOfMatter.SOLID);
+		
 		// 4. Ask the user for a state of matter.
-
+		String stateEntered = JOptionPane.showInputDialog(null, "Enter a state of matter");
+		
+		
+		
 		// 5. Iterate through the array and find what the user entered.
+		for(int i = 0; i < states.size(); i++) {
+			if(states.get(i).toString().equalsIgnoreCase(stateEntered)) {
+				System.out.println(states.get(i).ordinal());
+					
+			
+			}
+		}
 		// Hint: .name() or .toString
 
 		// 6. Print outs its ordinal(order in the enum list)
@@ -38,9 +53,11 @@ public class IntroToEnums {
 
 		// 7. Add a celsiusTemp member variable to StatesOfMatter.
 		// Note: Make sure to encapsulate it.
-
+		
+		
+		
 		// 8. Give it a default value of the temperature each state occurs in water.
-		// Hint: Gas = 100, Liquid(room temp) = 25.55, Solid = 0
+		// Hint: Gas = 100, Liquid(room temp) = 25.55, Solid = 0 plasma = 10000
 
 		// Example
 		// enum Months{

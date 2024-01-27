@@ -8,65 +8,69 @@ public class EncapsulateTheData {
 
 	// 3. Pass all the JUnit tests.
 
-	/* 
+	/*
 	 * All negative arguments should set itemsReceived to 0.
 	 */
 
 	private int itemsReceived;
-	
+	private double degreesTurned;
+	private String nomenclature;
+	private Object memberObj;
 
 	public void setItemsReceived(int itemsReceived) {
-		if(itemsReceived < 0) {
+		if (itemsReceived < 0) {
 			System.out.println("ya can't give negative items, idiot");
 			this.itemsReceived = 0;
-		}else {
-		
-		
-		this.itemsReceived = itemsReceived;
+		} else {
+
+			this.itemsReceived = itemsReceived;
 		}
 	}
+
 	public void setDegreesTurned(double degreesTurned) {
-		if(degreesTurned <0.0) {
+		if (degreesTurned <= 0.0) {
 			this.degreesTurned = 0;
-		}if(degreesTurned > 360.0) {
+		} else if (degreesTurned >= 360.0) { //else if -> optimization
 			this.degreesTurned = 360.0;
-		}else {
+		} else {
 			this.degreesTurned = degreesTurned;
 		}
 	}
-	
+
 	public void setNomenclature(String nomenclature) {
-		if(nomenclature.contentEquals("")) {
+		if (nomenclature.contentEquals("")) {
 			this.nomenclature = " ";
-		}else {
+		} else {
 			this.nomenclature = nomenclature;
 		}
-	}public void setMemberObj(Object memberObj) {
-		if(memberObj instanceof String) {
+	}
+
+	public void setMemberObj(Object memberObj) {
+		if (memberObj instanceof String) {
 			this.memberObj = new Object();
-		}else {
+		} else {
 			this.memberObj = memberObj;
 		}
 	}
-	
-	//GETTERS//
-	
-	
-	 int getItemsReceived() {
+
+	// GETTERS//
+
+	public int getItemsReceived() {
 		return itemsReceived;
 	}
-	 double getDegreesTurned() {
-		 return degreesTurned;
-	 }
-	 String getNomenclature() {
-		 return nomenclature;
-	 }
-	 Object getMemberObj() {
-		 return memberObj;
-	 }
-	
-	
-	
+
+	public double getDegreesTurned() {
+		return degreesTurned;
+	}
+
+	public String getNomenclature() {
+		return nomenclature;
+	}
+
+	public Object getMemberObj() {
+		return memberObj;
+	}
+
 	/*
 	 * degreesTurned must be locked between 0.0 and 360.0 inclusive.
 	 * 
@@ -74,16 +78,12 @@ public class EncapsulateTheData {
 	 * bound.
 	 */
 
-	private double degreesTurned;
-
 	/*
 	 * nomenclature must not contain an empty String.
 	 * 
 	 * An empty String parameter should set nomenclature to a String with a single
 	 * space.
 	 */
-
-	private String nomenclature;
 
 	/*
 	 * memberObj must not be a String.
@@ -100,7 +100,5 @@ public class EncapsulateTheData {
 	 * 
 	 * System.out.println(rob instanceof Random); //prints false
 	 */
-
-	private Object memberObj;
 
 }
