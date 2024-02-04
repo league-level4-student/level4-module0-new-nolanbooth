@@ -159,12 +159,20 @@ public class SnakeGame implements ActionListener, KeyListener {
 		 * Hint: Use the snake's isLocationOnSnake method to make sure you don't put the
 		 * food on top of the snake.
 		 */
-		if (snake.isLocationOnSnake(randomLoc) == true) {
-			System.out.println("rip");
+		while(snake.isLocationOnSnake(randomLoc) == true) {
+			randx = ran.nextInt(WIDTH);
+			randy = ran.nextInt(HEIGHT);
+			
+			
 		}
+		
+		foodLocation = randomLoc;
+		System.out.println("food location set to randomLoc");
+		
+		
 	}
 
-	private void gameOver() {
+	private void gameOver() { // Done
 
 		// Stop the timer.
 		timer.stop();
@@ -173,6 +181,16 @@ public class SnakeGame implements ActionListener, KeyListener {
 		JOptionPane.showMessageDialog(null, "hah your snake is dead");
 		// Ask the user if they want to play again.
 		
+		
+		String selection = JOptionPane.showInputDialog("Do you want to play again? Yes or no");
+		
+		if(selection.equalsIgnoreCase("yes")) {
+			snake.resetLocation();
+			randomizeFoodLocation();
+			timer.restart();
+		}else {
+			System.exit(0);
+		}
 		/*
 		 * If the user wants to play again, call the snake's resetLocation method and
 		 * this class's randomizeFoodLocation method then restart the timer. Otherwise,
@@ -182,20 +200,27 @@ public class SnakeGame implements ActionListener, KeyListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-
+	public void actionPerformed(ActionEvent e) { // DONE
+	
 		// Call the snake's update method.
-
+		snake.update();
 		/*
 		 * If the snake's head is colliding with its own body or out of bounds call the
 		 * gameOver method.
 		 */
-
+		if(snake.isHeadCollidingWithBody() || snake.isOutOfBounds()) {
+			gameOver();
+		}
+		
 		/*
 		 * If the location of the snake's head is equal to the location of the food,
 		 * feed the snake and randomize the food location.
 		 */
-
+		if(snake.getHeadLocation().equals(foodLocation)) {
+			System.out.println("yes");
+			snake.feed();
+			randomizeFoodLocation();
+		}
 		panel.repaint();
 	}
 }

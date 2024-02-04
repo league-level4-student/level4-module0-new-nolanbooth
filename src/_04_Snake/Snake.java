@@ -78,8 +78,12 @@ public class Snake {
 		 * the snake (index 0) or you will go out of bounds.
 		 */
 		
-		for(int i = snake.size(); i >= 0; i--) {
-			snake.get(i).setLocation(snake.get(i-1).getLocation()); // might have to change the +- one
+		for(int i = snake.size()-1; i > 0; i--) { //>= 1 doesn't work
+			
+			
+			snake.get(i).setLocation(snake.get(i-1).getLocation()); 
+			
+			
 		}
 
 		/*
@@ -182,9 +186,11 @@ public class Snake {
 		/*
 		 * Complete the method so it returns true if the head is located in the same
 		 * location as any other body segment.
+		 * 
+		 * Since head is the first segment I made the statement go from 1 to the end
 		 */
-		for(int i = 0; i < snake.size(); i ++) {
-			if(head.getLocation() == snake.get(i).getLocation()) {
+		for(int i = 1; i < snake.size()-1; i ++) {
+			if(head.getLocation().equals(snake.get(i).getLocation())) {
 				return true;
 			}
 		}
